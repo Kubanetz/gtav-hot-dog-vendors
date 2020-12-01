@@ -135,9 +135,3 @@ namespace HotDogVendors
         }
     }
 }
-
-// Useful Links
-// All Vehicles - https://pastebin.com/uTxZnhaN
-// All Player Models - https://pastebin.com/i5c1zA0W
-// All Weapons - https://pastebin.com/M3kD9pnJ
-// GTA V ScriptHook V Dot Net - https://www.gta5-mods.com/tools/scripthookv-net
