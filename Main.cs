@@ -1,4 +1,4 @@
-﻿// HotDogVendors 1.0 - Kubanetz
+// HotDogVendors 1.0 - Kubanetz
 using GTA;
 using GTA.Math;
 using GTA.Native;
@@ -50,24 +50,9 @@ namespace HotDogVendors
         }
         private void onTick(object sender, EventArgs e)
         {
-            //Game.Player.Character.IsInvincible = true;
             //Player character must not be in vehicle
             if (Game.Player.Character.IsOnFoot)
             {
-                //Displaying a "wanted" message
-                if (Game.Player.WantedLevel > 0)
-                {
-                    DisplayHelpTextThisFrame(MsgWanted);
-                    return;
-                }
-                //Displaying a "money" message (if less 5)
-                if (Game.Player.Money < 5)
-                {
-                    DisplayHelpTextThisFrame(MsgMoney);
-                    return;
-                }
-                //If everything is OK
-                else
                 {
                     //Select an NPC from an area around the player with a 2f radius
                     foreach (var Vendor in World.GetNearbyPeds(Game.Player.Character.Position, 2f))
@@ -85,8 +70,24 @@ namespace HotDogVendors
                                         DisplayHelpTextThisFrame(MsgKey);
                                         if(Game.IsControlJustPressed(2, GTA.Control.Context))
                                         {
-                                          //Loading animation dictionary #1
-                                          Function.Call(Hash.REQUEST_ANIM_DICT, "gestures@m@standing@casual");
+                                        //Displaying a "wanted" message
+                                        if (Game.Player.WantedLevel > 0)
+                                        {
+                                            DisplayHelpTextThisFrame(MsgWanted);
+                                            Wait(3000);
+                                            return;
+                                        }
+                                        //Displaying a "money" message (if less 5)
+                                        if (Game.Player.Money < 5)
+                                        {
+                                            DisplayHelpTextThisFrame(MsgMoney);
+                                            Wait(3000);
+                                            return;
+                                        }
+                                        //If everything is OK
+                                        else
+                                            //Loading animation dictionary #1
+                                            Function.Call(Hash.REQUEST_ANIM_DICT, "gestures@m@standing@casual");
                                           Wait(5);
                                           //Loading animation dictionary #2
                                           Function.Call(Hash.REQUEST_ANIM_DICT, "mp_player_inteat@burger");
